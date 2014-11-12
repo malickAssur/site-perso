@@ -1,6 +1,6 @@
 <?php 
 $emailTo = 'elmn64@yahoo.fr';
-$siteTitle = 'votre contact depuis mon site perso [malickas.free.fr]';
+$siteTitle = 'contact depuis mon site perso [malickas.free.fr]';
 
 error_reporting(E_ALL ^ E_NOTICE); // hide all basic notices from PHP
 
@@ -41,7 +41,7 @@ if(isset($_POST['submitted'])) {
 	// upon no failure errors let's email now!
 	if(!isset($hasError)) {
 		
-		$subject = 'Nouveau message de '.$siteTitle.' from '.$name;
+		$subject = 'Nouveau message de '.$siteTitle.' de la part '.$name;
 		$sendCopy = trim($_POST['sendCopy']);
 		$body = "Nom: $name \n\nEmail: $email \n\nMessage: $comments";
 		$headers = 'From: ' .' <'.$email.'>' . "\r\n" . 'Reply-To: ' . $email;
@@ -49,7 +49,7 @@ if(isset($_POST['submitted'])) {
 		mail($emailTo, $subject, $body, $headers);
 		
         //Autoresponse
-		$respondSubject = 'Merci '.$siteTitle;
+		$respondSubject = 'Merci de votre '.$siteTitle;
 		$respondBody = "Votre message a été bien tranmis ! \n\n A bientôt.";
 		$respondHeaders = 'From: ' .' <'.$emailTo.'>' . "\r\n" . 'Reply-To: ' . $emailTo;
 		
